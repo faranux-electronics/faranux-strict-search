@@ -1,7 +1,4 @@
-/* Faranux Strict Search — frontend styles
-   Brand primary: #932013
-   ---------------------------------------------------------- */
-
+/* Faranux Strict Search — bolder frontend styles */
 .faranux-strict-search-form {
     position: relative;
     width: 100%;
@@ -11,8 +8,8 @@
     display: flex;
     align-items: center;
     gap: 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
     overflow: hidden;
     background: #fff;
     transition: border-color 0.2s;
@@ -20,24 +17,24 @@
 
 .faranux-strict-search-inner:focus-within {
     border-color: #932013;
-    box-shadow: 0 0 0 2px rgba(147, 32, 19, 0.15);
-    outline: none;
+    box-shadow: 0 4px 12px rgba(147, 32, 19, 0.1);
 }
 
 .faranux-strict-search-input {
     flex: 1 1 auto;
     min-width: 0;
-    padding: 0.5rem 0.75rem;
+    padding: 14px 16px;
+    /* Bolder size */
     border: none;
     outline: none;
-    font-size: 0.95rem;
+    font-size: 16px;
+    /* Bolder text */
     background: transparent;
     color: inherit;
     -webkit-appearance: none;
     appearance: none;
 }
 
-/* Remove the native clear (×) button on webkit so ours is consistent */
 .faranux-strict-search-input::-webkit-search-cancel-button {
     -webkit-appearance: none;
 }
@@ -47,29 +44,27 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.5rem 0.85rem;
+    padding: 0 20px;
+    height: 100%;
     border: none;
-    border-left: 1px solid #ccc;
     background: #932013;
     color: #fff;
     cursor: pointer;
     transition: background 0.2s;
-    line-height: 1;
 }
 
-.faranux-strict-search-btn:hover,
-.faranux-strict-search-btn:focus {
+.faranux-strict-search-btn:hover {
     background: #7a1a10;
-    outline: none;
 }
 
 .faranux-strict-search-btn svg {
     display: block;
     pointer-events: none;
+    width: 20px;
+    height: 20px;
 }
 
 /* ── Live results dropdown ───────────────────────────────── */
-
 .faranux-strict-search-results {
     display: none;
     position: absolute;
@@ -79,9 +74,9 @@
     z-index: 9999;
     background: #fff;
     border: 1px solid #ddd;
-    border-radius: 4px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-    max-height: 360px;
+    border-radius: 6px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    max-height: 400px;
     overflow-y: auto;
 }
 
@@ -90,7 +85,6 @@
 }
 
 /* ── Result list ─────────────────────────────────────────── */
-
 .faranux-results-list {
     list-style: none;
     margin: 0;
@@ -101,82 +95,86 @@
     border-bottom: 1px solid #f0f0f0;
 }
 
-.faranux-result-item:last-child {
-    border-bottom: none;
-}
-
 .faranux-result-item a {
     display: flex;
     align-items: center;
-    gap: 0.6rem;
-    padding: 0.55rem 0.75rem;
+    gap: 12px;
+    padding: 12px;
     text-decoration: none;
     color: inherit;
-    font-size: 0.9rem;
+    font-size: 14px;
     transition: background 0.15s;
 }
 
-.faranux-result-item a:hover,
-.faranux-result-item a:focus {
+.faranux-result-item a:hover {
     background: #fdf3f2;
     color: #932013;
-    outline: none;
 }
 
 .faranux-result-item img {
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
     object-fit: contain;
     flex-shrink: 0;
-    border-radius: 3px;
+    border-radius: 4px;
     border: 1px solid #eee;
 }
 
+/* Meta Data layout */
+.faranux-meta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+}
+
 .faranux-result-title {
-    flex: 1 1 auto;
+    font-weight: 600;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: #333;
 }
 
 .faranux-result-price {
-    flex-shrink: 0;
-    font-size: 0.82rem;
+    font-size: 13px;
     color: #932013;
-    font-weight: 600;
-    white-space: nowrap;
+    font-weight: 700;
+    margin-top: 2px;
 }
 
-/* ── No results / loading ────────────────────────────────── */
+.layout-post .faranux-result-title {
+    color: #932013;
+}
 
+/* ── Utility ─────────────────────────────────────────────── */
 .faranux-no-results,
 .faranux-searching {
     margin: 0;
-    padding: 0.75rem 1rem;
-    font-size: 0.9rem;
+    padding: 15px;
+    font-size: 14px;
     color: #666;
+    text-align: center;
 }
-
-/* ── Loading spinner ─────────────────────────────────────── */
 
 .faranux-searching::before {
     content: '';
     display: inline-block;
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     border: 2px solid #ccc;
     border-top-color: #932013;
     border-radius: 50%;
     animation: faranux-spin 0.6s linear infinite;
+    margin-right: 8px;
     vertical-align: middle;
-    margin-right: 6px;
 }
 
 @keyframes faranux-spin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
-
-/* ── Screen-reader utility ───────────────────────────────── */
 
 .screen-reader-text {
     position: absolute !important;
