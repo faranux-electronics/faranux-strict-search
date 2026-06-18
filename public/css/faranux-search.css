@@ -1,0 +1,14 @@
+.faranux-strict-search-form {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.faranux-strict-search-input {
+    width: 100%;
+    padding: 0.5rem;
+}
+
+.faranux-strict-search-results {
+    display: none;
+}
