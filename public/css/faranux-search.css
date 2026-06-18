@@ -1,14 +1,188 @@
+/* Faranux Strict Search — frontend styles
+   Brand primary: #932013
+   ---------------------------------------------------------- */
+
 .faranux-strict-search-form {
+    position: relative;
+    width: 100%;
+}
+
+.faranux-strict-search-inner {
     display: flex;
-    gap: 0.5rem;
     align-items: center;
+    gap: 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #fff;
+    transition: border-color 0.2s;
+}
+
+.faranux-strict-search-inner:focus-within {
+    border-color: #932013;
+    box-shadow: 0 0 0 2px rgba(147, 32, 19, 0.15);
+    outline: none;
 }
 
 .faranux-strict-search-input {
-    width: 100%;
-    padding: 0.5rem;
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 0.5rem 0.75rem;
+    border: none;
+    outline: none;
+    font-size: 0.95rem;
+    background: transparent;
+    color: inherit;
+    -webkit-appearance: none;
+    appearance: none;
 }
+
+/* Remove the native clear (×) button on webkit so ours is consistent */
+.faranux-strict-search-input::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+}
+
+.faranux-strict-search-btn {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 0.85rem;
+    border: none;
+    border-left: 1px solid #ccc;
+    background: #932013;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.2s;
+    line-height: 1;
+}
+
+.faranux-strict-search-btn:hover,
+.faranux-strict-search-btn:focus {
+    background: #7a1a10;
+    outline: none;
+}
+
+.faranux-strict-search-btn svg {
+    display: block;
+    pointer-events: none;
+}
+
+/* ── Live results dropdown ───────────────────────────────── */
 
 .faranux-strict-search-results {
     display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    max-height: 360px;
+    overflow-y: auto;
+}
+
+.faranux-strict-search-results.is-visible {
+    display: block;
+}
+
+/* ── Result list ─────────────────────────────────────────── */
+
+.faranux-results-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.faranux-result-item {
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.faranux-result-item:last-child {
+    border-bottom: none;
+}
+
+.faranux-result-item a {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.55rem 0.75rem;
+    text-decoration: none;
+    color: inherit;
+    font-size: 0.9rem;
+    transition: background 0.15s;
+}
+
+.faranux-result-item a:hover,
+.faranux-result-item a:focus {
+    background: #fdf3f2;
+    color: #932013;
+    outline: none;
+}
+
+.faranux-result-item img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    flex-shrink: 0;
+    border-radius: 3px;
+    border: 1px solid #eee;
+}
+
+.faranux-result-title {
+    flex: 1 1 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.faranux-result-price {
+    flex-shrink: 0;
+    font-size: 0.82rem;
+    color: #932013;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* ── No results / loading ────────────────────────────────── */
+
+.faranux-no-results,
+.faranux-searching {
+    margin: 0;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* ── Loading spinner ─────────────────────────────────────── */
+
+.faranux-searching::before {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 2px solid #ccc;
+    border-top-color: #932013;
+    border-radius: 50%;
+    animation: faranux-spin 0.6s linear infinite;
+    vertical-align: middle;
+    margin-right: 6px;
+}
+
+@keyframes faranux-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ── Screen-reader utility ───────────────────────────────── */
+
+.screen-reader-text {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    clip: rect(1px, 1px, 1px, 1px) !important;
+    white-space: nowrap !important;
 }
